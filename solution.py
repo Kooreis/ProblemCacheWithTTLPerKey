@@ -1,7 +1,5 @@
-import time
-import threading
-
-class Cache:
-    def __init__(self):
-        self.cache = {}
-        self.ttl = {}
+def set(self, key, value, ttl):
+        self.cache[key] = value
+        self.ttl[key] = ttl
+        timer = threading.Timer(ttl, self.delete, args=[key])
+        timer.start()
